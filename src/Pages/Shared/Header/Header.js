@@ -1,19 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// import React, { useContext } from 'react';
-// import { Link,useNavigate  } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link,useNavigate  } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
+import { AuthContext } from '../../../context/AuthProvider';
 // import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Header = () => {
 
-/*   const {user,logOut} = useContext(AuthContext);
+  const {user,logOut} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignOut = ()=>{
     logOut()
     .then(()=>     
       navigate('/'))
     .catch(err=>console.log(err))
-  } */
+  }
 
     const menuItems = <>
     <li>
@@ -25,12 +24,12 @@ const Header = () => {
         {/* <Link to='/login'>Login</Link> */}
     </li>
     </>
-/*     const reviewItems = <>
+    const userItems = <>
     <li>
-        <Link to='/addservice'>Add service</Link>
-        <Link to='/reviews'>My reviews</Link>
+        <Link to='/addservice'>Dashboard</Link>
+        {/* <Link to='/reviews'>My reviews</Link> */}
     </li>
-    </> */
+    </>
     return (
         <div className="navbar bg-base-100 pt-4">
         <div className="navbar-start">
@@ -59,14 +58,14 @@ const Header = () => {
         <div className="navbar-end">
           
         
-{/*           <div>
+          <div>
             
             {
               user?.uid ?
               <div className='flex justify-between'>
             <div>
           <ul className="menu menu-horizontal p-0 font-semibold">
-          {reviewItems}
+          {userItems}
           </ul>
         </div>
         <div>
@@ -79,7 +78,7 @@ const Header = () => {
                       :
                       <Link to='/login' className=""><button className="btn btn-outline mx-2 text-cyan-500 hover:bg-cyan-500 hover:text-cyan-50 hover:border-cyan-500">Login</button></Link>
             }
-          </div> */}
+          </div>
         </div>
       </div>
     );
