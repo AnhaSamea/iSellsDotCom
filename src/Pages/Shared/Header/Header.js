@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { Link,useNavigate  } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 import { AuthContext } from '../../../context/AuthProvider';
-// import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+
 const Header = () => {
 
-  const {user,logOut} = useContext(AuthContext);
+  const {user,logout} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignOut = ()=>{
-    logOut()
+    logout()
     .then(()=>     
       navigate('/'))
     .catch(err=>console.log(err))
@@ -21,13 +21,13 @@ const Header = () => {
         <Link to='/services'>Services</Link>
         <Link to='/blog'>Blog</Link>
         <Link to='/contact'>Contact</Link>
-        {/* <Link to='/login'>Login</Link> */}
+        
     </li>
     </>
     const userItems = <>
     <li>
         <Link to='/addservice'>Dashboard</Link>
-        {/* <Link to='/reviews'>My reviews</Link> */}
+        
     </li>
     </>
     return (

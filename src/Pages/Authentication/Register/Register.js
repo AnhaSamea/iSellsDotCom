@@ -1,11 +1,20 @@
 import React, { useContext } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import { AuthContext } from '../../../context/AuthProvider';
+import Spinner from '../../../Router/Spinner/Spinner';
 
 const Register = () => {
 
     const{loading,createUser,signInWithGoogle} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    //spinner
+    if(loading){
+        return <Spinner></Spinner>
+    }
 
     const handleRegister = event=>{
 
@@ -15,17 +24,45 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name,email,password);
+
+        //sign in with email and password
+        createUser(email,password)
+        .then(res=>{
+           const user = res.user;
+           console.log(user);
+           form.reset();
+           navigate(from, {replace:true})
+    })
+    .catch(err=>console.error(err))
+
     }
+
+    //sign in with google
+    const handleGoogleSignIn = ()=>{
+        signInWithGoogle()
+        .then(res=>{
+            const user = res.user;
+            console.log(user);
+            navigate(from, {replace:true})
+        })
+        .catch(error=>console.log(error));
+    }
+
+    
 
 
     return (
         <div className='flex justify-center my-12'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-slate-100">
                 <h1 className="text-2xl font-bold text-center">Register</h1>
-                <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={handleRegister} novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                    <div className="space-y-1 text-sm">
+                        <label for="name" className="block text-gray-800">Name</label>
+                        <input type="text" name="name" id="name" placeholder="name" className="w-full px-4 py-3 rounded-md dark:border-gray-700 bg-slate-200 focus:dark:border-violet-400" />
+                    </div>
                     <div className="space-y-1 text-sm">
                         <label for="email" className="block text-gray-800">Email</label>
-                        <input type="text" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 bg-slate-200 focus:dark:border-violet-400" />
+                        <input type="email" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 bg-slate-200 focus:dark:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label for="password" className="block text-gray-800">Password</label>
@@ -42,7 +79,7 @@ const Register = () => {
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                 </div>
                 <div className="flex justify-center space-x-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-slate-400 focus:ring-slate-600 text-xl ">
+                    <button onClick={handleGoogleSignIn} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-slate-400 focus:ring-slate-600 text-xl ">
                         <FcGoogle className="w-7 h-7 fill-current"></FcGoogle>
                         <p>Sign Up with Google</p>
                     </button>
