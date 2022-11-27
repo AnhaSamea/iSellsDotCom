@@ -6,49 +6,49 @@ import Spinner from '../../../Router/Spinner/Spinner';
 
 const Register = () => {
 
-    const{loading,createUser,signInWithGoogle} = useContext(AuthContext);
+    const { loading, createUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     //spinner
-    if(loading){
+    if (loading) {
         return <Spinner></Spinner>
     }
 
-    const handleRegister = event=>{
+    const handleRegister = event => {
 
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,email,password);
+        console.log(name, email, password);
 
         //sign in with email and password
-        createUser(email,password)
-        .then(res=>{
-           const user = res.user;
-           console.log(user);
-           form.reset();
-           navigate(from, {replace:true})
-    })
-    .catch(err=>console.error(err))
+        createUser(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                form.reset();
+                navigate(from, { replace: true })
+            })
+            .catch(err => console.error(err))
 
     }
 
     //sign in with google
-    const handleGoogleSignIn = ()=>{
+    const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(res=>{
-            const user = res.user;
-            console.log(user);
-            navigate(from, {replace:true})
-        })
-        .catch(error=>console.log(error));
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error));
     }
 
-    
+
 
 
     return (

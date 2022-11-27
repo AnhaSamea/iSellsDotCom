@@ -1,48 +1,48 @@
 import React, { useContext } from 'react';
-import { Link, useLocation, useNavigate  } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import { AuthContext } from '../../../context/AuthProvider';
 import Spinner from '../../../Router/Spinner/Spinner';
 
 const Login = () => {
 
-    const {loading,signIn,signInWithGoogle} = useContext(AuthContext)
+    const { loading, signIn, signInWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     //spinner
-    if(loading){
+    if (loading) {
         return <Spinner></Spinner>
     }
 
-    const handleSubmit = event =>{
+    const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        console.log(email, password);
 
-        signIn(email,password)
-        .then(res=>{
-            const user= res.user;
-            console.log(user);
-            form.reset();
-            navigate(from, {replace:true})
-        })
-        .catch(err=>{
-            console.error(err);
-          })
+        signIn(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                form.reset();
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
-    const handleGoogleSignIn = ()=>{
+    const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(res=>{
-            const user = res.user;
-            console.log(user);
-            navigate(from, {replace:true})
-        })
-        .catch(error=>console.log(error));
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error));
     }
 
 
@@ -63,7 +63,7 @@ const Login = () => {
 			</div> */}
                     </div>
                     <button className="block w-full p-3 text-center rounded-sm text-white bg-slate-800">Sign In</button>
-                   
+
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
