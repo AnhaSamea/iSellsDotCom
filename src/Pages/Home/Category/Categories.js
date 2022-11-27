@@ -9,8 +9,8 @@ const Categories = () => {
             .then(data => setCategories(data))
     }, [])
     return (
-        <div className='mt-8'>
-            <p className='text-xl font-bold text-slate-800 pt-3'>Categories</p>
+        <div className='mt-8 p-6 bg-slate-100 rounded-lg'>
+            <p className='text-xl font-bold text-slate-800'>Categories</p>
             <div className='grid sm:grid-cols1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-8 mx-auto'>
 
                 {
