@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link,useNavigate  } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
+import PrimaryButton from '../../../Button/PrimaryButton';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Header = () => {
@@ -86,10 +87,12 @@ const Header = () => {
             user?.photoURL && <img className='rounded-full w-8 h-8 flex mt-2' src={user.photoURL} alt="" /> 
         }
           </div>
-                <button onClick={handleSignOut} className="btn btn-outline text-cyan-50 bg-cyan-500 hover:bg-cyan-50 hover:text-cyan-500 hover:border-cyan-500">Logout</button>
+                {/* <PrimaryButton onClick={handleSignOut} className="mx-auto">Logout</PrimaryButton> */}
+                {/* <button onClick={handleSignOut} className="btn btn-outline text-cyan-50 bg-cyan-500 hover:bg-cyan-50 hover:text-cyan-500 hover:border-cyan-500">Logout</button> */}
+                <button onClick={handleSignOut}><PrimaryButton className="mx-auto ">Logout</PrimaryButton></button>
               </div>
                       :
-                      <Link to='/login' className=""><button className="btn btn-outline mx-2 text-cyan-500 hover:bg-cyan-500 hover:text-cyan-50 hover:border-cyan-500">Login</button></Link>
+                      <Link to='/login'><PrimaryButton className="mx-auto ">Login</PrimaryButton></Link>
             }
           </div>
         </div>
