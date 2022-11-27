@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Login from "../../Pages/Authentication/Login/Login";
 import Register from "../../Pages/Authentication/Register/Register";
+import Blog from "../../Pages/Home/Blog/Blog";
 import Categories from "../../Pages/Home/Category/Categories";
 import CategoryId from "../../Pages/Home/Category/PhoneModels/CategoryId";
 import Home from "../../Pages/Home/Home/Home";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 element: <CategoryId></CategoryId>,
                 loader: ({ params }) =>
                     fetch(`http://localhost:5000/categories/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>,               
             },
 
         ]
