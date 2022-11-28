@@ -1,7 +1,7 @@
 import React from 'react';
-import BookingModal from '../BookingModal/BookingModal';
 
-const CategoryIdDetails = ({ model }) => {
+
+const CategoryIdDetails = ({ model,setProduct }) => {
     const { picture, name, location, resalePrice,originalPrice,yearsofUse } = model;
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -15,7 +15,8 @@ const CategoryIdDetails = ({ model }) => {
                 <p>Original Price :  {originalPrice}</p>
                 <p><small>Used for :  {yearsofUse}</small></p>
                </div>
-                <BookingModal></BookingModal>
+               <label onClick={()=>setProduct(model)} htmlFor="my-modal-3" className='btn'>Book Now</label>
+
             </div>
         </div>
 

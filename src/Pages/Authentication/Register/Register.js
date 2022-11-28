@@ -71,6 +71,14 @@ const Register = () => {
 				<a rel="noopener noreferrer" href="#">Forgot Password?</a>
 			</div> */}
                     </div>
+                    {/* <div className='flex justify-center'>
+                    <select className="select select-secondary w-full max-w-xs text-center">
+                        <option disabled selected className='text-center'>You are</option>
+                        <option>Admin</option>
+                        <option>Buyer</option>
+                        <option>Seller</option>
+                    </select>
+                    </div> */}
                     <button className="block w-full p-3 text-center rounded-sm text-white bg-slate-800">Sign Up</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
