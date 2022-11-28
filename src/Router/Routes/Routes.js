@@ -7,6 +7,7 @@ import Categories from "../../Pages/Home/Category/Categories";
 import CategoryId from "../../Pages/Home/Category/PhoneModels/CategoryId";
 import Home from "../../Pages/Home/Home/Home";
 import Error from "../Error/Error";
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 
 const router = createBrowserRouter([
     {
@@ -31,9 +32,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categories/:id',
-                element: <CategoryId></CategoryId>,
+                element: <PrivateRoute>
+                    <CategoryId></CategoryId>
+                </PrivateRoute>,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/categories/${params.id}`)
+                    fetch(`https://isells-dot-com-server.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/blog',
