@@ -14,15 +14,23 @@ const BookingModal = () => {
                         <form action="" className='bg-slate-100 my-5 py-8 px-5 rounded-lg'>
                             <div>
                                 <label for="name" className="block mb-1 ml-1 text-start">Name</label>
-                                <input id="name" type="text" placeholder="Your name" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
+                                <input id="name" name='name' type="text" placeholder="Your name" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-white" />
                             </div>
                             <div>
                                 <label for="email" className="block mb-1 ml-1 text-start">Email</label>
-                                <input id="email" type="email" placeholder="Your email" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
+                                <input id="email" name='email' type="email" placeholder="Your email" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-white" />
                             </div>
                             <div>
-                                <label for="name" className="block mb-1 ml-1 text-start">Password</label>
-                                <input id="password" type="password" placeholder="password" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
+                                <label for="name" className="block mb-1 ml-1 text-start">Price</label>
+                                <input id="price" name='price' type="text" placeholder="price" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-white" />
+                            </div>
+                            <div>
+                                <label for="phone" className="block mb-1 ml-1 text-start">Phone</label>
+                                <input id="phone" name='phone' type="password" placeholder="phone" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-white" />
+                            </div>
+                            <div>
+                                <label for="location" className="block mb-1 ml-1 text-start">Location</label>
+                                <input id="location" name='location' type="text" placeholder="location" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-white" />
                             </div>
                             
                         </form>
@@ -32,32 +40,6 @@ const BookingModal = () => {
                     </div>
                 </div>
 
-                {/* Put this part before </body> tag */}
-                {/* <input type="checkbox" id="my-modal" className="modal-toggle" />
-                <div className="modal">
-                    <div className="modal-box relative">
-                    
-                        <form action="" className='bg-slate-100 my-5 py-8 px-5 rounded-lg'>
-                            <div>
-                                <label for="name" className="block mb-1 ml-1 text-start">Name</label>
-                                <input id="name" type="text" placeholder="Your name" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
-                            </div>
-                            <div>
-                                <label for="email" className="block mb-1 ml-1 text-start">Email</label>
-                                <input id="email" type="email" placeholder="Your email" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
-                            </div>
-                            <div>
-                                <label for="name" className="block mb-1 ml-1 text-start">Password</label>
-                                <input id="password" type="password" placeholder="password" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-700 bg-slate-200" />
-                            </div>
-                            
-                        </form>
-                        <div className="modal-action">
-                            <PrimaryButton><label htmlFor="my-modal">Submit</label></PrimaryButton>
-                        </div>
-                    </div>
-                </div> */}
-                {/* The button to open modal */}
         </div>
     );
 };
